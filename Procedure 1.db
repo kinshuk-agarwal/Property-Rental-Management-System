@@ -1,0 +1,14 @@
+create or replace procedure SearchPropertyForRent(loc in varchar2) as
+p property%ROWTYPE;
+CURSOR c IS
+select * from Property where loc=locality;
+begin
+open c;
+LOOP
+FETCH c into p;
+exit WHEN c%NOTFOUND;
+dbms_output.put_line(' PropertyID: '||p.propertyid||' OwnerID: '||p.owner||' Available From: '||p.afd||' Available Till: '||p.atd||' Area: '||p.area||' Plint Area: '||p.plintarea||' Rent: '||p.rent||' Hike: '||p.hike||' FloorNo.: '||p.floorno||' Locality: '||p.locality||' Address: '||p.address||' Year of Construction: '||p.yearofconstr);
+END LOOP;
+CLOSE c;
+end;
+/

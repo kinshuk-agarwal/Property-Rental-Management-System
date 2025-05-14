@@ -1,0 +1,18 @@
+create or replace procedure GetPropertyRecords(id in int) as
+propertyId number;
+owner int;
+afd date;
+atd date;
+area float;
+plintarea float;
+rent float;
+hike float;
+floorNo number;
+locality varchar2(20);
+address varchar2(50);
+yearofconstr number;
+begin
+select * into propertyId,owner, afd,atd,area, plintarea, rent, hike, floorNo, locality, address, yearofconstr from Property where owner=id;
+dbms_output.put_line(' PropertyId: '||propertyId||' afd is: '||afd||' afd is: '||afd||' area is: '||area||' plintarea is: '||plintarea||' rent is: '||rent||' hike is: '||hike||' floorNo is: '||floorNo||' locality is: 
+end;
+/

@@ -1,0 +1,76 @@
+create table Users(Aadhar int, Name varchar(15), Age int, Password varchar(10), DoorNo int, Street varchar(50), State varchar(15), Pincode int, username vc(20));
+
+alter table Users add constraint user_pk primary key(Aadhar);
+
+
+create table Phone(AadharNo int, PhoneNo Int);
+
+alter table Phone add constraint Phone_pk primary key(AadharNo, PhoneNo);
+
+create table Owner(OwnerId int);
+
+alter table Owner add constraint Owner_pk primary key(OwnerId);
+
+create table Tenant(TenantId int);
+
+alter table Tenant add constraint Tenant_pk primary key(TenantId);
+
+create table Manager(ManagerId int);
+
+
+alter table Manager add constraint Manager_pk primary key(ManagerId);
+
+
+
+
+alter table Phone add constraint Phone_fk foreign key(AadharNo) references Users(Aadhar);
+
+alter table Owner add constraint Owner_fk foreign key(OwnerId) references Users(Aadhar);
+
+alter table Tenant add constraint Tenant_fk foreign key(TenantId) references Users(Aadhar);
+ 
+alter table Manager add constraint Manager_fk foreign key(ManagerId) references Users(Aadhar);
+
+
+
+
+create table Property (propertyId int, owner int, afd date, atd date, area float, plintarea float, rent float, hike float, floorNo int, locality varchar(20), address varchar(20), yearofconstr int);
+
+alter table property add constraint property_pk primary key(propertyid);
+alter table Property add constraint property_fk foreign key(owner) references Owner(ownerid);
+
+create table other_facilities (fpropertyId int, facilities varchar(40));
+
+
+alter table other_facilities add constraint other_facilities_fk foreign key(fpropertyId) references Property(propertyId);
+
+alter table other_facilities add constraint other_facilities_pk primary key(fpropertyid, facilities );
+
+
+
+create table residential_property  (RpropertyId int, type varchar(20), numberbeds int);
+alter table residential_property add constraint residential_property_pk primary key(rpropertyid);
+alter table residential_property add constraint residential_property_fk foreign key(RpropertyId) references Property(propertyId);
+
+
+create table Ownership_table (oownerid int, opropertyid int , registered char(1));
+alter table ownership_table add constraint ownership_table_pk primary key(oownerid, opropertyid);
+
+alter table Ownership_table add constraint Ownership_table_fk1 foreign key(opropertyid) references Property(propertyId);
+
+alter table Ownership_table add constraint Ownership_table_fk2 foreign key(oownerid) references Owner(OwnerId);
+
+
+create table commercial_property (cpropertyid int, type varchar(20));
+
+alter table commercial_property add constraint commercial_property_pk primary key(cpropertyid);
+
+alter table commercial_property add constraint commercial_property_fk foreign key(cpropertyId) references Property(propertyId);
+
+create table rental (rtenantid int, rentpropertyid int , start_date date, end_date  date, rhike float, Rrent float, commission float);
+
+alter table rental add constraint rental_fk1 foreign key(rentpropertyId) references Property(propertyId);
+
+alter table rental add constraint rental_fk2 foreign key(rtenantid) references Tenant(TenantId);
+
+alter table rental add constraint rental_pk primary key(rtenantid, rentpropertyid, start_date);

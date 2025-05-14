@@ -1,0 +1,6 @@
+create or replace procedure InsertPropertyRecord(propertyId in int, owner in int, afd in date, atd in date, area in float, plintarea in float, rent in float, hike in float, floorNo in int, locality in varchar, address in varchar, yearofconstr in int) as
+begin;
+insert into Property values(propertyId,owner,afd,atd,area, plintarea, rent,hike,floorNo, locality, address, yearofconstr);
+dbms_output.put_line('Inserted');
+end;
+/

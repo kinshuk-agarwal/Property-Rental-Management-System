@@ -1,0 +1,15 @@
+create or replace procedure GetRentHistory(pid in number) as
+r rental%ROWTYPE;
+CURSOR c IS
+select * from rental where pid=rentpropertyid and end_date is not null;
+begin
+open c;
+LOOP
+FETCH c into r;
+exit WHEN c%NOTFOUND;
+dbms_output.put_line(' TenantID: '||r.rtenantid||' PropertyID: '||r.rentpropertyid||' Start Date: '||r.start_date||' End Date: '||r.end_date||' %Hike: '||r.rhike||' Rent per Month: '||r.rrent||' Commission: '||r.commission)
+;
+END LOOP;
+CLOSE c;
+end;
+/

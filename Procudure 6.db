@@ -1,0 +1,17 @@
+create or replace procedure GetTenantDetails(id in int) as
+tenid int;
+aadhar number;
+name varchar2(15);
+age number;
+password varchar2(10);
+doorno number;
+street varchar2(50);
+state varchar2(15);
+pincode number;
+username varchar2(20);
+begin
+select rtenantid into tenid from rental where rentpropertyid=id and end_date=NULL;
+select * into aadhar, name, age, password, doorno, street, state, pincode, username from users where aadhar=tenid;
+dbms_output.put_line(' Aadhar: '||aadhar||' Name: '||name||' Age: '||age||' Password: '||password||' DoorNo: '||doorno||' Street '||street||' State: '||state||' Pincode: '||pincode||' Username: '||username);
+ end;
+ /

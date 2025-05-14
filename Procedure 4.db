@@ -1,0 +1,7 @@
+Create or replace procedure CreateNewUser(p_aadhar IN number, p_name IN varchar2, p_age IN number, p_password IN varchar2, p_door_no IN number, p_street IN varchar2, p_state IN varchar2, p_pincode IN number, p_username IN varchar2) AS
+begin
+insert into Users values (p_aadhar, p_name, p_age, p_password, p_door_no, p_street, p_state, p_pincode, p_username);
+dbms_output.put_line(‘User Created Successfully.’);
+commit;
+end
+/
