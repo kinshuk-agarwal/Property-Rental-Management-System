@@ -1,28 +1,45 @@
 {
-  "name": "property-rental-backend",
-  "version": "1.0.0",
-  "description": "Backend API for property rental management system",
-  "main": "src/server.js",
+  "name": "property-rental-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "npx vite preview"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "pg": "^8.11.3",
-    "dotenv": "^16.3.1",
-    "winston": "^3.11.0",
-    "cors": "^2.8.5",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "express-validator": "^7.0.1",
-    "nodemailer": "^6.9.7"
+    "@radix-ui/react-avatar": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-toast": "^1.2.15",
+    "axios": "^1.6.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.561.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^3.3.6",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
-  },
-  "keywords": ["property", "rental", "management", "api"],
-  "author": "",
-  "license": "MIT"
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31",
+    "vite": "^4.5.0"
+  }
 }
